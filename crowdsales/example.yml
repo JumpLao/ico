@@ -59,7 +59,7 @@ testnet:
         team_multisig:
             contract_name: MultiSigWallet
             contract_file: GnosisWallet.sol
-            address: "0x40a05d4ce308bf600cb275d7a3e9113518f59c54"
+            address: "0xb603f821f04c73ec7cc843e012521ef4890b8f74"
         #
         # Pre-ICO fund collector
         #

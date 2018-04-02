@@ -14,14 +14,11 @@ RUN apt-get update -y && \
     add-apt-repository -y ppa:ethereum/ethereum && \
     apt update -y && \
     apt install -y ethereum
-
-
-
-#0.17 build
-RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.17/solidity-ubuntu-trusty.zip && \
+RUN apt-get install -y libz3-dev
+#0.18 build
+RUN wget https://github.com/ethereum/solidity/releases/download/v0.4.18/solidity-ubuntu-trusty.zip && \
     unzip solidity-ubuntu-trusty.zip && \
     cp solc /bin/
-
 
 RUN mkdir -p /usr/src/app
 

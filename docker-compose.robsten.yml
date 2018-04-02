@@ -1,23 +1,22 @@
 version: '2'
 services:
-    ganache:
-        image: trufflesuite/ganache-cli
-        container_name: ganache-cli
-        tty: true
-        ports:
-          - "4545:8545/tcp"
-          - "4546:8546/tcp"
-          - "50303:30303/tcp"
-          - "50303:30303/udp"
-          - "50304:30304/udp"
+    # ganache:
+    #     image: trufflesuite/ganache-cli
+    #     container_name: ganache-cli
+    #     tty: true
+    #     ports:
+    #       - "4545:8545/tcp"
+    #       - "4546:8546/tcp"
+    #       - "50303:30303/tcp"
+    #       - "50303:30303/udp"
+    #       - "50304:30304/udp"
         # networks:
         #   testnet:
         #     ipv4_address: 172.21.0.2
-    # geth:
-    #     image: ethereum/client-go
-    #     command: --testnet --fast --ipcdisable --rpc --rpcapi "db,eth,net,web3,personal,admin" --verbosity 3 --rpccorsdomain "*"  --cache 2048 --rpcaddr "0.0.0.0" --rpcvhosts=geth
-    #     volumes: 
-    #       - /path/on/host:/root/.ethereum
+    geth:
+        image: ethereum/client-go
+        command: --testnet --fast --ipcdisable --rpc --rpcapi "db,eth,net,web3,personal,admin" --verbosity 3 --rpccorsdomain "*"  --cache 2048 --rpcaddr "0.0.0.0" --rpcvhosts=geth
+
     tkn:
         build:
           context: .
@@ -34,9 +33,7 @@ services:
           - "./ico:/usr/src/app/ico"
           - "./populus.json:/usr/src/app/populus.json"
         depends_on:
-          - "ganache"
-        links:
-          - "ganache:geth"
+          - "geth"
 
 networks:
   testnet:
